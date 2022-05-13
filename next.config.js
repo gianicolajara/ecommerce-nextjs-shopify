@@ -6,6 +6,8 @@ const nextConfig = {
     loader: "akamai",
     path: "/ecommerce-nextjs-shopify",
   },
+  basePath: "/ecommerce-nextjs-shopifye",
+  assetPrefix: "/ecommerce-nextjs-shopify",
   env: {
     NEXT_PUBLIC_SHOPIFY_API_KEY: process.env.NEXT_PUBLIC_SHOPIFY_API_KEY,
     NEXT_PUBLIC_SHOPIFY_API_SECRET_KEY:
