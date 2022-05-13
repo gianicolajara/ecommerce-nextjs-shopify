@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["http://localhost:3000"],
+    domains: ["https://gianicolajara.github.io/"],
     loader: "akamai",
-    path: "",
+    path: "/ecommerce-nextjs-shopify",
   },
   env: {
     NEXT_PUBLIC_SHOPIFY_API_KEY: process.env.NEXT_PUBLIC_SHOPIFY_API_KEY,
