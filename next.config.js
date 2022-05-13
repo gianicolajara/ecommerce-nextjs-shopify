@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["https://gianicolajara.github.io/"],
+    domains: ["https://gianicolajara.github.io/", "https://cdn.shopify.com/"],
     loader: "akamai",
     path: "/ecommerce-nextjs-shopify",
   },
