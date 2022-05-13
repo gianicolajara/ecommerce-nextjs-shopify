@@ -5,13 +5,19 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
+  env:
+    NEXT_PUBLIC_SHOPIFY_API_KEY: 03d4fa3892f274f0f7205d63fcad5d9c
+    NEXT_PUBLIC_SHOPIFY_API_SECRET_KEY: b1ef5bb4bebc440f50f6ce2a5f273c87
+    NEXT_PUBLIC_SHOPIFY_STOREFRONT_DOMAIN: shopystudy.myshopify.com
+    NEXT_PUBLIC_SHOPIFY_ACCESS_TOKEN: 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
+    NEXT_PUBLIC_STOREFRONT_ACCESS_TOKEN: f88011cd8b86c2eedee3fa2deaf6a376
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,18 +26,18 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build
-    - run: npm run export
-    
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.3
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: out # The folder the action should deploy.
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - run: npm run export
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: out # The folder the action should deploy.
