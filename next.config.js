@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: ["https://gianicolajara.github.io/", "https://cdn.shopify.com/"],
     loader: "akamai",
-    path: "/",
+    path: "",
   },
   basePath: "/ecommerce-nextjs-shopifye",
   assetPrefix: "/ecommerce-nextjs-shopify",
