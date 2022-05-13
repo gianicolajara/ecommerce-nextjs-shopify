@@ -27,6 +27,8 @@ export const getStaticProps = async () => {
   const collections = await getCollectionByHandle("home-page");
   const allCollections = await getAllCollections();
 
+  //h
+
   return {
     props: {
       collections: collections.edges,
