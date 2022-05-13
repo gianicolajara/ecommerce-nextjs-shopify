@@ -23,7 +23,7 @@ export default function Home({ collections, allCollections }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const collections = await getCollectionByHandle("home-page");
   const allCollections = await getAllCollections();
 
