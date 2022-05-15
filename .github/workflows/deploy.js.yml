@@ -19,7 +19,7 @@ jobs:
       NEXT_PUBLIC_SHOPIFY_STOREFRONT_DOMAIN: shopystudy.myshopify.com
       NEXT_PUBLIC_SHOPIFY_ACCESS_TOKEN: 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
       NEXT_PUBLIC_STOREFRONT_ACCESS_TOKEN: f88011cd8b86c2eedee3fa2deaf6a376
-      NEXT_PUBLIC_BASE_URL_PAGE: /ecommerce-nextjs-shopify
+      NEXT_PUBLIC_BASE_URL_PAGE: ecommerce-nextjs-shopify
 
     strategy:
       matrix:

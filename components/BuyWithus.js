@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Subtitle from "./Subtitle";
 
-const prefix = process.env.NEXT_PUBLIC_BASE_URL_PAGE;
-
 const BuyWithUs = () => {
+  const prefix = process.env.NEXT_PUBLIC_BASE_URL_PAGE;
+
   return (
     <section className="max-w-[999px] m-auto w-full h-full grid grid-cols-1 grid-rows-2 gap-5 lg:grid-cols-2 lg:grid-rows-1">
       <div className="flex flex-col justify-center">
