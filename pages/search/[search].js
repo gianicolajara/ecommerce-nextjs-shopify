@@ -6,6 +6,8 @@ import { getProductByTitle } from "../../utils/shopify";
 const SearchPage = ({ products }) => {
   const router = useRouter();
 
+  console.log(products);
+
   return (
     <>
       {!router.isFallback && products && products.length > 0 ? (
@@ -13,7 +15,7 @@ const SearchPage = ({ products }) => {
           {products.map((product) => {
             return (
               <ProductCard
-                key={product.node.key}
+                key={product.node.id}
                 handle={product.node.handle}
                 image={product.node.images.edges[0].node.url}
                 price={`${product.node.priceRange.minVariantPrice.amount}${product.node.priceRange.minVariantPrice.currencyCode}`}

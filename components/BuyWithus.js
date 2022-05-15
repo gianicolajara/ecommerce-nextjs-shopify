@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Subtitle from "./Subtitle";
 
+const prefix = process.env.NEXT_PUBLIC_BASE_URL_PAGE;
+
 const BuyWithUs = () => {
   return (
     <section className="max-w-[999px] m-auto w-full h-full grid grid-cols-1 grid-rows-2 gap-5 lg:grid-cols-2 lg:grid-rows-1">
@@ -13,7 +15,7 @@ const BuyWithUs = () => {
       </div>
       <div className="relative min-h-[300px]">
         <Image
-          src={"/images/buywithus.jpg"}
+          src={`${prefix}/images/buywithus.jpg`}
           alt="buywithus"
           layout="fill"
           objectFit="cover"

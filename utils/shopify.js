@@ -177,6 +177,7 @@ export const getProductByTitle = async (title = "") => {
           products(first: 250, query: $title) {
             edges {
               node {
+                id
                 priceRange{
                   minVariantPrice{
                     amount
