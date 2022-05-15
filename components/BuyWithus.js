@@ -15,7 +15,7 @@ const BuyWithUs = () => {
       </div>
       <div className="relative min-h-[300px]">
         <Image
-          src={`${prefix}/images/buywithus.jpg`}
+          src={`images/buywithus.jpg`}
           alt="buywithus"
           layout="fill"
           objectFit="cover"
