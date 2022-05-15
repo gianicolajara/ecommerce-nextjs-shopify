@@ -6,13 +6,13 @@ import { getProductByTitle } from "../../utils/shopify";
 const SearchPage = ({ products }) => {
   const router = useRouter();
 
-  console.log("entrando a productos");
-  console.log("estos son los productos");
-  console.log(products);
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      {!router.isFallback && products && products.length > 0 ? (
+      {products && products.length > 0 ? (
         <section className="max-w-[999px] m-auto grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-5 lg:py-10">
           {products.map((product) => {
             return (
