@@ -6,6 +6,8 @@ import { getProductByTitle } from "../../utils/shopify";
 const SearchPage = ({ products }) => {
   const router = useRouter();
 
+  console.log("entrando a productos");
+  console.log("estos son los productos");
   console.log(products);
 
   return (
