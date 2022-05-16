@@ -28,10 +28,8 @@ const FormProductClothes = ({
       <small>{product.productType}</small>
       <Title>{product.title}</Title>
       <div className="flex gap-3">
-        <Subtitle>{variantSelected.priceV2.amount}</Subtitle>
-        <Subtitle bold={false}>
-          ${variantSelected.priceV2.currencyCode}
-        </Subtitle>
+        <Subtitle bold={false}>${variantSelected.priceV2.amount}</Subtitle>
+        <Subtitle>{variantSelected.priceV2.currencyCode}</Subtitle>
       </div>
       <Subtitle>Description</Subtitle>
       <p title="Description">{product.description}</p>
@@ -42,16 +40,23 @@ const FormProductClothes = ({
         selectedOptions={selectedOptions}
         handleChangeOption={handleChangeOption}
       />
-      <SelectQuantityProduct
-        variantSelected={variantSelected}
-        quantity={quantity}
-        setQuantity={setQuantity}
-      />
-      <div className="flex gap-3">
-        <Button onClick={() => addToCart(variantSelected, quantity)}>
-          Add to cart
-        </Button>
-      </div>
+      {variantSelected.quantityAvailable === 0 ? (
+        <Subtitle color="text-gray-600">Out of stock</Subtitle>
+      ) : (
+        <SelectQuantityProduct
+          variantSelected={variantSelected}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
+      )}
+
+      {variantSelected.quantityAvailable > 0 && (
+        <div className="flex gap-3">
+          <Button onClick={() => addToCart(variantSelected, quantity)}>
+            Add to cart
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

@@ -53,7 +53,7 @@ const Customers = () => {
   return (
     <section>
       <div className="w-full h-[400px] overflow-x-hidden relative">
-        <div className="absolute top-0 right-0 z-20 flex p-3 gap-5">
+        <div className="absolute top-0 right-0 z-20 flex p-3 gap-5 select-none">
           <AiFillCaretLeft
             size={30}
             color="black"
