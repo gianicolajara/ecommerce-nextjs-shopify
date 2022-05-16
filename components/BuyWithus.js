@@ -3,11 +3,9 @@ import P from "./P";
 import Subtitle from "./Subtitle";
 
 const BuyWithUs = () => {
-  const prefix = process.env.NEXT_PUBLIC_BASE_URL_PAGE;
-
   return (
-    <section className="max-w-[999px] m-auto w-full h-full grid grid-cols-1 grid-rows-2 gap-5 lg:grid-cols-2 lg:grid-rows-1">
-      <div className="flex flex-col justify-center">
+    <section className="max-w-[999px] m-auto w-full h-full grid grid-cols-1 grid-rows-2 gap-5 lg:grid-cols-2 lg:grid-rows-1 py-20">
+      <div className="flex flex-col justify-center gap-5">
         <Subtitle>Buy With Us</Subtitle>
         <P color="text-black">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
