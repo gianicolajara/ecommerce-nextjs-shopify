@@ -71,15 +71,20 @@ const CartNav = ({ open = false }) => {
                       <P bold={true}>
                         Price:
                         <span className="font-normal">
-                          {item.priceV2.amount}
+                          {` ${item.priceV2.amount}`}
                           <span className="font-bold">
-                            {item.priceV2.currencyCode}
+                            {` $${item.priceV2.currencyCode}`}
                           </span>
                         </span>
                       </P>
                       <P bold={true}>
-                        Total:{item.priceV2.amount * item.quantity}
-                        {item.priceV2.currencyCode}
+                        Total:{" "}
+                        <span className="font-normal">
+                          {item.priceV2.amount * item.quantity}
+                          <span className="font-bold">
+                            {` $${item.priceV2.currencyCode}`}
+                          </span>
+                        </span>
                       </P>
                       <ChangeNumberProduct item={item} />
                       <div className="mt-5">
@@ -107,6 +112,7 @@ const CartNav = ({ open = false }) => {
                     (prev += current.priceV2.amount * current.quantity),
                   0
                 )}
+                <span>{` $${cart.cart[0].priceV2.currencyCode}`}</span>
               </P>
             </div>
             <div className="w-full flex justify-between">
@@ -126,6 +132,7 @@ const CartNav = ({ open = false }) => {
                     (prev += current.priceV2.amount * current.quantity),
                   0
                 )}
+                <span>{` $${cart.cart[0].priceV2.currencyCode}`}</span>
               </P>
             </div>
             <Button bg="bg-white" color="text-black" onClick={handleCheckOut}>

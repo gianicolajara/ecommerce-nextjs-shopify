@@ -55,7 +55,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full text-center">
+      <div className="w-full text-center mt-10">
         <P color="text-slate-400">
           Copyright Gianicola Jara &copy; {new Date().getFullYear()}
         </P>
