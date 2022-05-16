@@ -4,7 +4,7 @@ import Subtitle from "./Subtitle";
 
 const BuyWithUs = () => {
   return (
-    <section className="max-w-[999px] m-auto w-full h-full grid grid-cols-1 grid-rows-2 gap-5 lg:grid-cols-2 lg:grid-rows-1 py-20">
+    <section className="max-w-[999px] m-auto w-full h-full grid grid-cols-1 grid-rows-1 gap-5 lg:grid-cols-2 lg:grid-rows-1 py-20">
       <div className="flex flex-col justify-center gap-5">
         <Subtitle>Buy With Us</Subtitle>
         <P color="text-black">
@@ -14,7 +14,7 @@ const BuyWithUs = () => {
           voluptatem ducimus recusandae?
         </P>
       </div>
-      <div className="relative min-h-[300px]">
+      <div className="relative min-h-[300px] hidden lg:flex">
         <Image
           src={`/images/buywithus.jpg`}
           alt="buywithus"
