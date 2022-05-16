@@ -105,7 +105,7 @@ const Product = ({ product }) => {
         <title>{firtsLetterUpper(product.title)} | E-Shopy</title>
       </Head>
       <div className="max-w-[999px] m-auto">
-        <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 lg:py-10 gap-5">
+        <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 pb-10 lg:py-10 gap-2 lg:gap-16">
           <div className="flex flex-col gap-5">
             <div className="w-full h-[400px] relative">
               <Image
