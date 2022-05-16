@@ -191,12 +191,14 @@ export const getProductByTitle = async (title = "") => {
                 featuredImage {
                   id
                   url
+                  altText
                 }
                 images(first: 10) {
                   edges {
                     node {
                       url
                       id
+                      altText
                     }
                   }
                 }
@@ -210,6 +212,7 @@ export const getProductByTitle = async (title = "") => {
                     id
                     image {
                       url
+                      altText
                     }
                     product {
                       title
@@ -257,6 +260,7 @@ export const getCollectionByHandle = async (handle = "") => {
                       productType
                       featuredImage {
                         url
+                        altText
                       }
                     }
                   }

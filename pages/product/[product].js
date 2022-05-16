@@ -9,6 +9,8 @@ import { formatterOptions, getSizesFromProduct } from "../../utils/products";
 import RowImages from "../../components/RowImages";
 import FormProductClothes from "../../components/FormProductClothes";
 import { useRouter } from "next/router";
+import Head from "next/head";
+import { firtsLetterUpper } from "../../utils/letters";
 
 const initialSelectedOptions = {
   Color: "",
@@ -43,6 +45,8 @@ const Product = ({ product }) => {
     setVariantSelected(filterVariant(formatterOptions(selectedOptions)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!product) return <>...loading</>;
 
   const filterOptionsColor = (options) => {
     const filterVariants = product.variants.nodes.filter((variant) => {
@@ -94,36 +98,41 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="max-w-[999px] m-auto">
-      <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 lg:py-10 gap-5">
-        <div className="flex flex-col gap-5">
-          <div className="w-full h-[400px] relative">
-            <Image
-              src={selectedImage.url}
-              alt="image"
-              layout="fill"
-              objectFit="cover"
-              quality={5}
+    <>
+      <Head>
+        <title>{firtsLetterUpper(product.title)} | E-Shopy</title>
+      </Head>
+      <div className="max-w-[999px] m-auto">
+        <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 lg:py-10 gap-5">
+          <div className="flex flex-col gap-5">
+            <div className="w-full h-[400px] relative">
+              <Image
+                src={selectedImage.url}
+                alt="image"
+                layout="fill"
+                objectFit="cover"
+                quality={5}
+              />
+            </div>
+            <RowImages
+              images={product.images.edges}
+              selectedImage={selectedImage}
+              handleChangeImage={handleChangeImage}
             />
           </div>
-          <RowImages
-            images={product.images.edges}
-            selectedImage={selectedImage}
-            handleChangeImage={handleChangeImage}
+          <FormProductClothes
+            product={product}
+            variantSelected={variantSelected}
+            sizes={sizes}
+            selectedOptions={selectedOptions}
+            handleChangeOption={handleChangeOption}
+            quantity={quantity}
+            setQuantity={setQuantity}
+            checkOut={checkOut}
           />
         </div>
-        <FormProductClothes
-          product={product}
-          variantSelected={variantSelected}
-          sizes={sizes}
-          selectedOptions={selectedOptions}
-          handleChangeOption={handleChangeOption}
-          quantity={quantity}
-          setQuantity={setQuantity}
-          checkOut={checkOut}
-        />
       </div>
-    </div>
+    </>
   );
 };
 

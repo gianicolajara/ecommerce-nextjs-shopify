@@ -5,6 +5,7 @@ import Collections from "../components/Collections";
 import { useState } from "react";
 import BuyWithUs from "../components/BuyWithus";
 import Customers from "../components/Customers";
+import Head from "next/head";
 
 export default function Home({ collections, allCollections }) {
   const [allCollectionsState, setAllCollectionsState] = useState(
@@ -14,12 +15,15 @@ export default function Home({ collections, allCollections }) {
   );
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Home | E-Shopy</title>
+      </Head>
       <Heroe collections={collections} />
       <BuyWithUs />
       <Collections collections={allCollectionsState} />
       <Customers />
-    </div>
+    </>
   );
 }
 

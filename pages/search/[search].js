@@ -1,6 +1,8 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import ProductCard from "../../components/ProductCard";
 import Title from "../../components/Title";
+import { firtsLetterUpper } from "../../utils/letters";
 import { getProductByTitle } from "../../utils/shopify";
 
 const SearchPage = ({ products }) => {
@@ -12,6 +14,9 @@ const SearchPage = ({ products }) => {
 
   return (
     <>
+      <Head>
+        <title>{firtsLetterUpper(router.query.search)} | E-Shopy</title>
+      </Head>
       {products && products.length > 0 ? (
         <section className="max-w-[999px] m-auto grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-5 lg:py-10">
           {products.map((product) => {

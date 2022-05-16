@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { useEffect } from "react";
 import P from "./P";
+import ListCustomers from "./ListCustomers";
 
 const customersMessags = [
   {
@@ -78,26 +79,7 @@ const Customers = () => {
           className={`w-full h-full flex flex-grow flex-shrink-0 flex-nowrap  items-center transition-all`}
           style={positionAnimation}
         >
-          {customersMessags.map((item) => (
-            <div
-              key={item.id}
-              className="min-w-full flex flex-col items-center gap-5"
-            >
-              <div className="w-[75px] h-[75px] relative rounded-full overflow-hidden shadow-lg border-4 border-slate-800">
-                <Image src={item.image} alt="avatar" layout="fill" />
-              </div>
-              <div className="max-w-[500px] w-full flex flex-col gap-5 items-center">
-                <P>
-                  <cite className="text-center inline-block text-black">
-                    {item.message}
-                  </cite>
-                </P>
-                <P color="text-black" bold={true}>
-                  {item.name}
-                </P>
-              </div>
-            </div>
-          ))}
+          <ListCustomers customersMessags={customersMessags} />
         </div>
       </div>
     </section>
