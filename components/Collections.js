@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Subtitle from "./Subtitle";
+import PropTypes from "prop-types";
 
-const Collections = ({ collections }) => {
+const Collections = ({ collections = [] }) => {
   const [animation, setAnimation] = useState(0);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const Collections = ({ collections }) => {
     }, 5000);
 
     return () => clearInterval(animationInterval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const positionAnimation = {
@@ -43,6 +45,8 @@ const Collections = ({ collections }) => {
                   objectFit="cover"
                   objectPosition="50% 15%"
                   className="w-screen h-full"
+                  priority={true}
+                  quality={40}
                 />
               </a>
             </Link>
@@ -51,6 +55,10 @@ const Collections = ({ collections }) => {
       })}
     </div>
   );
+};
+
+Collections.propTypes = {
+  collections: PropTypes.array.isRequired,
 };
 
 export default Collections;

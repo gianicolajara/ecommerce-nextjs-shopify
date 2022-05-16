@@ -1,8 +1,5 @@
-import Image from "next/image";
 import { useState } from "react";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
-import { useEffect } from "react";
-import P from "./P";
 import ListCustomers from "./ListCustomers";
 
 const customersMessags = [

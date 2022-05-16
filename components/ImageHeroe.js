@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import Subtitle from "./Subtitle";
+import PropTypes from "prop-types";
 
-const ImageHeroe = ({ img, title, price, money, link, alt }) => {
+const ImageHeroe = ({
+  img = "",
+  title = "title",
+  price = "",
+  money = "",
+  link = "",
+  alt = "",
+}) => {
   return (
     <div className="relative flex h-full">
       <Link href={`/product/${link}`} passHref>
@@ -13,7 +21,9 @@ const ImageHeroe = ({ img, title, price, money, link, alt }) => {
               alt={alt}
               layout="fill"
               objectFit="cover"
-              className="hover:scale-150 transition duration-300"
+              className="hover:scale-125 transition duration-500"
+              priority={true}
+              quality={50}
             />
           </div>
 
@@ -27,6 +37,15 @@ const ImageHeroe = ({ img, title, price, money, link, alt }) => {
       </Link>
     </div>
   );
+};
+
+ImageHeroe.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  money: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
 };
 
 export default ImageHeroe;

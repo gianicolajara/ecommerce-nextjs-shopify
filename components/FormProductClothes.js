@@ -5,15 +5,16 @@ import Subtitle from "./Subtitle";
 import Title from "./Title";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
+import PropTypes from "prop-types";
 
 const FormProductClothes = ({
-  product,
-  variantSelected,
-  sizes,
-  selectedOptions,
-  handleChangeOption,
-  quantity,
-  setQuantity,
+  product = {},
+  variantSelected = {},
+  sizes = [],
+  selectedOptions = [],
+  handleChangeOption = () => {},
+  quantity = "",
+  setQuantity = () => {},
 }) => {
   const { handleAddToCart } = useContext(CartContext);
 
@@ -53,6 +54,16 @@ const FormProductClothes = ({
       </div>
     </div>
   );
+};
+
+FormProductClothes.propTypes = {
+  product: PropTypes.object.isRequired,
+  variantSelected: PropTypes.object.isRequired,
+  sizes: PropTypes.array.isRequired,
+  selectedOptions: PropTypes.object.isRequired,
+  handleChangeOption: PropTypes.func.isRequired,
+  quantity: PropTypes.number.isRequired,
+  setQuantity: PropTypes.func.isRequired,
 };
 
 export default FormProductClothes;

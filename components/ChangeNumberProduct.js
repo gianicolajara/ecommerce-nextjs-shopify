@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
 import NumberField from "./NumberField";
+import PropTypes from "prop-types";
 
-const ChangeNumberProduct = ({ item }) => {
+const ChangeNumberProduct = ({ item = {} }) => {
   const { handleUpdateCart } = useContext(CartContext);
 
   const handleSum = () => {
@@ -26,6 +27,10 @@ const ChangeNumberProduct = ({ item }) => {
       handleRest={handleRest}
     />
   );
+};
+
+ChangeNumberProduct.propTypes = {
+  item: PropTypes.object.isRequired,
 };
 
 export default ChangeNumberProduct;

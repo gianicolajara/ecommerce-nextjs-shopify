@@ -8,8 +8,9 @@ import ChangeNumberProduct from "./ChangeNumberProduct";
 import { BsCartXFill } from "react-icons/bs";
 import { createCheckOut } from "../utils/shopify";
 import { useRouter } from "next/router";
+import PropTypes from "prop-types";
 
-const CartNav = ({ open }) => {
+const CartNav = ({ open = false }) => {
   const { cart, handleDeleteCart } = useContext(CartContext);
 
   const router = useRouter();
@@ -140,6 +141,10 @@ const CartNav = ({ open }) => {
       )}
     </div>
   );
+};
+
+CartNav.propTypes = {
+  open: PropTypes.bool.isRequired,
 };
 
 export default CartNav;

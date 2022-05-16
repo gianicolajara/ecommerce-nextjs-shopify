@@ -18,7 +18,7 @@ const Products = ({ products }) => {
         {products.map((product) => {
           return (
             <ProductCard
-              key={product.node.key}
+              key={product.node.id}
               handle={product.node.handle}
               image={product.node.featuredImage.url}
               price={`${product.node.priceRange.minVariantPrice.amount} ${product.node.priceRange.minVariantPrice.currencyCode}`}

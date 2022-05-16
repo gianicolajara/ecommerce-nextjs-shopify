@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Subtitle from "./Subtitle";
 import { AiOutlineArrowUp } from "react-icons/ai";
+import PropTypes from "prop-types";
 
 const initialDescription = false;
 
-const Collapsable = ({ title, children }) => {
+const Collapsable = ({ children, title = "" }) => {
   const [openDescription, setOpenDescription] = useState(true);
 
   const handleOpenDescription = () => {
@@ -44,6 +45,10 @@ const Collapsable = ({ title, children }) => {
       </div>
     </>
   );
+};
+
+Collapsable.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Collapsable;

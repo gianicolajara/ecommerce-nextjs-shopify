@@ -2,8 +2,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Button from "./Button";
 import Subtitle from "./Subtitle";
+import PropTypes from "prop-types";
 
-const ProductCard = ({ image, title, price, handle }) => {
+const ProductCard = ({ image = "", title = "", price = "", handle = "" }) => {
   const router = useRouter();
 
   const handlePushProduct = (handle) => {
@@ -28,6 +29,13 @@ const ProductCard = ({ image, title, price, handle }) => {
       </div>
     </article>
   );
+};
+
+ProductCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  handle: PropTypes.string.isRequired,
 };
 
 export default ProductCard;

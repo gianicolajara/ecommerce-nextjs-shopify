@@ -1,7 +1,8 @@
 import Image from "next/image";
 import P from "./P";
+import PropTypes from "prop-types";
 
-const ListCustomers = ({ customersMessags }) => {
+const ListCustomers = ({ customersMessags = [] }) => {
   return (
     <>
       {customersMessags.map((item) => (
@@ -26,6 +27,10 @@ const ListCustomers = ({ customersMessags }) => {
       ))}
     </>
   );
+};
+
+ListCustomers.propTypes = {
+  customersMessags: PropTypes.array.isRequired,
 };
 
 export default ListCustomers;

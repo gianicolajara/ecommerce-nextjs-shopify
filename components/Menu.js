@@ -1,10 +1,11 @@
-import FieldWithIcon from "./FieldWithIcon";
-import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import Cart from "./Cart";
 import Search from "./Search";
 import Link from "next/link";
 import { sizes } from "../config/sizes";
-const Menu = ({ handleOpen }) => {
+import PropTypes from "prop-types";
+
+const Menu = ({ handleOpen = () => {} }) => {
   return (
     <div className="w-full h-auto sticky top-0 left-0 z-[50]">
       <div
@@ -41,6 +42,10 @@ const Menu = ({ handleOpen }) => {
       </div>
     </div>
   );
+};
+
+Menu.propTypes = {
+  handleOpen: PropTypes.func.isRequired,
 };
 
 export default Menu;

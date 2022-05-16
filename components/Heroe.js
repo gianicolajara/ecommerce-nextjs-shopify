@@ -1,8 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
-import { sizes } from "../config/sizes";
 import ImageHeroe from "./ImageHeroe";
-import Subtitle from "./Subtitle";
+import PropTypes from "prop-types";
 
 const Heroe = ({ collections }) => {
   return (
@@ -39,6 +36,10 @@ const Heroe = ({ collections }) => {
       </div>
     </div>
   );
+};
+
+Heroe.propTypes = {
+  collections: PropTypes.array.isRequired,
 };
 
 export default Heroe;

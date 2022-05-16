@@ -1,11 +1,12 @@
 import OptionClic from "./OptionClic";
 import Subtitle from "./Subtitle";
+import PropTypes from "prop-types";
 
 const OptionFormProductClothes = ({
-  product,
-  selectedOptions,
-  handleChangeOption,
-  sizes,
+  product = {},
+  selectedOptions = {},
+  handleChangeOption = () => {},
+  sizes = {},
 }) => {
   return (
     <div className="flex flex-col gap-5">
@@ -43,6 +44,13 @@ const OptionFormProductClothes = ({
       })}
     </div>
   );
+};
+
+OptionFormProductClothes.propTypes = {
+  product: PropTypes.object.isRequired,
+  selectedOptions: PropTypes.object.isRequired,
+  handleChangeOption: PropTypes.func.isRequired,
+  sizes: PropTypes.array.isRequired,
 };
 
 export default OptionFormProductClothes;

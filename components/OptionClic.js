@@ -1,4 +1,11 @@
-const OptionClic = ({ selectedOptions, handleChangeOption, option, value }) => {
+import PropTypes from "prop-types";
+
+const OptionClic = ({
+  selectedOptions = {},
+  handleChangeOption = () => {},
+  option = {},
+  value = "",
+}) => {
   return (
     <div
       className={`${
@@ -11,6 +18,13 @@ const OptionClic = ({ selectedOptions, handleChangeOption, option, value }) => {
       {value}
     </div>
   );
+};
+
+OptionClic.propTypes = {
+  selectedOptions: PropTypes.object.isRequired,
+  handleChangeOption: PropTypes.func.isRequired,
+  option: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default OptionClic;

@@ -1,4 +1,10 @@
-const SelectQuantityProduct = ({ variantSelected, quantity, setQuantity }) => {
+import PropTypes from "prop-types";
+
+const SelectQuantityProduct = ({
+  variantSelected = {},
+  quantity = 0,
+  setQuantity = () => {},
+}) => {
   const handleChangeQuantity = (e) => {
     setQuantity(Number.parseInt(e.target.value));
   };
@@ -20,6 +26,12 @@ const SelectQuantityProduct = ({ variantSelected, quantity, setQuantity }) => {
       ))}
     </select>
   );
+};
+
+SelectQuantityProduct.propTypes = {
+  variantSelected: PropTypes.object.isRequired,
+  quantity: PropTypes.number.isRequired,
+  setQuantity: PropTypes.func.isRequired,
 };
 
 export default SelectQuantityProduct;

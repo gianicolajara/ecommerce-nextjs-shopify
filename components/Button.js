@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+
 const Button = ({
   children,
-  onClick,
+  onClick = () => {},
   bg = "bg-black",
   color = "text-white",
 }) => {
@@ -9,6 +11,12 @@ const Button = ({
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  onClick: PropTypes.func,
+  bg: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default Button;

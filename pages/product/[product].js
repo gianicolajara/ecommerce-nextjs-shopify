@@ -17,10 +17,12 @@ const initialSelectedOptions = {
   Size: "",
 };
 
+const initialSizes = [];
+
 const Product = ({ product }) => {
   const router = useRouter();
 
-  const [sizes, setSizes] = useState([]);
+  const [sizes, setSizes] = useState(initialSizes);
 
   const [selectedOptions, setSelectedOptions] = useState(
     initialSelectedOptions

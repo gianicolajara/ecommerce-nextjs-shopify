@@ -1,6 +1,11 @@
 import Image from "next/image";
+import PropTypes from "prop-types";
 
-const RowImages = ({ images, selectedImage, handleChangeImage }) => {
+const RowImages = ({
+  images = [],
+  selectedImage = {},
+  handleChangeImage = () => {},
+}) => {
   return (
     <div className="flex flex-nowrap gap-3 overflow-x-scroll">
       {images.map((img) => {
@@ -30,6 +35,12 @@ const RowImages = ({ images, selectedImage, handleChangeImage }) => {
       })}
     </div>
   );
+};
+
+RowImages.propTypes = {
+  images: PropTypes.array.isRequired,
+  selectedImage: PropTypes.object.isRequired,
+  handleChangeImage: PropTypes.func.isRequired,
 };
 
 export default RowImages;
