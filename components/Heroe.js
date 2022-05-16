@@ -7,7 +7,7 @@ import Subtitle from "./Subtitle";
 const Heroe = ({ collections }) => {
   return (
     <div
-      className={`w-full h-full grid grid-cols-1 grid-rows-[calc(100vh-${sizes.menuPhoneComplete}px),_1fr] lg:grid-cols-[60%,_40%] lg:grid-rows-[calc(100vh-${sizes.menuDes}px)]`}
+      className={`w-full h-full grid grid-cols-1 grid-rows-[calc(100vh-150px),_1fr] lg:grid-cols-[60%,_40%] lg:grid-rows-[calc(100vh-75px)]`}
     >
       <ImageHeroe
         img={collections[2].node.featuredImage.url}
@@ -18,7 +18,7 @@ const Heroe = ({ collections }) => {
         alt={collections[2].node.featuredImage.altText}
       />
       <div
-        className={`grid grid-cols-1 grid-rows-[repeat(2,_calc(_100vh-${sizes.menuPhoneComplete}px))] lg:grid-cols-1 lg:grid-rows-2`}
+        className={`grid grid-cols-1 grid-rows-[repeat(2,_calc(_100vh-150px))] lg:grid-cols-1 lg:grid-rows-2`}
       >
         <ImageHeroe
           img={collections[1].node.featuredImage.url}
