@@ -27,6 +27,7 @@ const SearchPage = ({ products }) => {
                 image={product.node.images.edges[0].node.url}
                 price={`${product.node.priceRange.minVariantPrice.amount}${product.node.priceRange.minVariantPrice.currencyCode}`}
                 title={product.node.title}
+                details={product.node.productType}
               />
             );
           })}

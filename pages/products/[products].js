@@ -23,6 +23,7 @@ const Products = ({ products }) => {
               image={product.node.featuredImage.url}
               price={`${product.node.priceRange.minVariantPrice.amount} ${product.node.priceRange.minVariantPrice.currencyCode}`}
               title={product.node.title}
+              details={product.node.productType}
             />
           );
         })}

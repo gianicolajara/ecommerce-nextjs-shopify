@@ -3,8 +3,15 @@ import { useRouter } from "next/router";
 import Button from "./Button";
 import Subtitle from "./Subtitle";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
-const ProductCard = ({ image = "", title = "", price = "", handle = "" }) => {
+const ProductCard = ({
+  image = "",
+  title = "",
+  price = "",
+  handle = "",
+  details = "",
+}) => {
   const router = useRouter();
 
   const handlePushProduct = (handle) => {
@@ -12,19 +19,22 @@ const ProductCard = ({ image = "", title = "", price = "", handle = "" }) => {
   };
 
   return (
-    <article className="flex flex-col h-[500px]">
-      <div className="relative w-full h-full max-h-[60%]">
-        <Image src={image} alt="imagen" layout="fill" objectFit="cover" />
-      </div>
-      <div className="flex flex-col flex-grow flex-shrink-0 justify-center p-3 gap-5">
-        <div className="text-center">
-          <Subtitle>{title}</Subtitle>
-          <Subtitle bold={false} color="text-blue-500">
-            {price}
-          </Subtitle>
+    <article
+      className="hover:outline hover:outline-4 hover:outline-black rounded-md overflow-hidden transition-all shadow-md"
+      onClick={() => handlePushProduct(handle)}
+    >
+      <div className="flex flex-col h-[500px] select-none shadow-md cursor-pointer hover:outline-8 hover:outline-black">
+        <div className="relative w-full h-full max-h-[60%]">
+          <div className="text-center absolute z-10 bg-white p-2">
+            <Subtitle bold={false}>${price}</Subtitle>
+          </div>
+          <Image src={image} alt="imagen" layout="fill" objectFit="cover" />
         </div>
-        <div className="flex w-full justify-center">
-          <Button onClick={() => handlePushProduct(handle)}>Show</Button>
+        <div className="flex flex-col flex-grow flex-shrink-0 justify-center p-3 gap-5">
+          <div className="text-center">
+            <Subtitle>{title}</Subtitle>
+            <small>{details}</small>
+          </div>
         </div>
       </div>
     </article>
@@ -36,6 +46,7 @@ ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   handle: PropTypes.string.isRequired,
+  details: PropTypes.string.isRequired,
 };
 
 export default ProductCard;
