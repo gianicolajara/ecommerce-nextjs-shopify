@@ -141,7 +141,7 @@ const Product = ({ product }) => {
                 backgroundSize: `${xY.scale}%`,
                 backgroundPositionX: `${xY.x}px`,
                 backgroundPositionY: `${xY.y}px`,
-                transition: "background-image 0.2s ease-in-out;",
+                transition: "background-image 0.2s ease-in-out",
               }}
             ></div>
             <RowImages

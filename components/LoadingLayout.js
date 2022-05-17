@@ -3,37 +3,46 @@ import { useState } from "react";
 import { ImSpinner10 } from "react-icons/im";
 import P from "./P";
 
-const loadingInitial = false;
+const loadingInitial = 0;
+let interval = null;
 
 const LoadingLayout = ({ children }) => {
   const [loading, setLoading] = useState(loadingInitial);
 
   Router.onRouteChangeStart = () => {
-    setLoading(true);
+    console.log("comenzando");
+    setInterval(25);
+    interval = setInterval(() => {
+      setLoading((loading) => (loading >= 75 ? loading + 0 : loading + 5));
+    }, 2000);
     document.body.style.overflowY = "hidden";
   };
 
   Router.onRouteChangeComplete = () => {
-    setLoading(false);
+    console.log("terminando");
+    clearInterval(interval);
+    setLoading(100);
+    setTimeout(() => {
+      setLoading(0);
+    }, 4000);
     document.body.style.overflowY = "auto";
   };
 
   Router.onRouteChangeError = () => {
-    setLoading(false);
+    clearInterval(interval);
+    setLoading(0);
   };
 
   return (
     <div>
       <div
-        className={`w-screen h-screen sticky top-0 left-0 bg-[rgba(0,0,0,0.8)] z-[9999999999999]  justify-center items-center ${
-          loading ? "z-[99999] flex" : "hidden"
-        }`}
-      >
-        <div className="flex flex-col justify-center items-center gap-3">
-          <ImSpinner10 size={50} className="text-white animate-spin" />
-          <P>Wait a Moment...</P>
-        </div>
-      </div>
+        className={`fixed max-w-[100%] top-0 left-0 z-[9999999999999999] bg-red-500`}
+        style={{
+          width: `${loading}%`,
+          height: `${loading === 100 ? "3px" : "0px"}`,
+          transition: `width 2s ease-in-out`,
+        }}
+      ></div>
       {children}
     </div>
   );
