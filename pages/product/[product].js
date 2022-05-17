@@ -4,7 +4,7 @@ import {
   getProductByHandle,
 } from "../../utils/shopify";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { formatterOptions, getSizesFromProduct } from "../../utils/products";
 import RowImages from "../../components/RowImages";
 import FormProductClothes from "../../components/FormProductClothes";
@@ -17,10 +17,18 @@ const initialSelectedOptions = {
   Size: "",
 };
 
+const initialXY = {
+  x: 0,
+  y: 0,
+  scale: 100,
+};
+
 const initialSizes = [];
 
 const Product = ({ product }) => {
   const router = useRouter();
+
+  const image = useRef();
 
   const [sizes, setSizes] = useState(initialSizes);
 
@@ -37,6 +45,8 @@ const Product = ({ product }) => {
   );
 
   const [quantity, setQuantity] = useState(0);
+
+  const [xY, setXY] = useState(initialXY);
 
   useEffect(() => {
     const selectedOptions = product.variants.nodes[0].selectedOptions;
@@ -99,6 +109,19 @@ const Product = ({ product }) => {
     }
   };
 
+  const zoomImage = (e) => {
+    setXY({
+      x: -e.nativeEvent.layerX,
+      y: -e.nativeEvent.layerY,
+
+      scale: 200,
+    });
+  };
+
+  const mouseLeaveHandle = () => {
+    setXY(initialXY);
+  };
+
   return (
     <>
       <Head>
@@ -107,15 +130,20 @@ const Product = ({ product }) => {
       <div className="max-w-[999px] m-auto">
         <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 pb-10 lg:py-10 gap-2 lg:gap-16">
           <div className="flex flex-col gap-5">
-            <div className="w-full h-[400px] relative">
-              <Image
-                src={selectedImage.url}
-                alt="image"
-                layout="fill"
-                objectFit="cover"
-                quality={5}
-              />
-            </div>
+            <div
+              className={`w-full h-[400px] relative  cursor-pointer`}
+              ref={image}
+              onMouseMove={zoomImage}
+              onMouseLeave={mouseLeaveHandle}
+              style={{
+                backgroundImage: `url('${selectedImage.url}')`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: `${xY.scale}%`,
+                backgroundPositionX: `${xY.x}px`,
+                backgroundPositionY: `${xY.y}px`,
+                transition: "background-image 0.2s ease-in-out;",
+              }}
+            ></div>
             <RowImages
               images={product.images.edges}
               selectedImage={selectedImage}
