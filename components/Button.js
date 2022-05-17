@@ -7,7 +7,10 @@ const Button = ({
   color = "text-white",
 }) => {
   return (
-    <button className={`${bg} p-3 ${color} font-bold`} onClick={onClick}>
+    <button
+      className={`${bg} p-3 ${color} font-bold hover:opacity-70 transition-all`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

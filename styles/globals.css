@@ -18,3 +18,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+::selection {
+  background: #ef4444; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #ef4444; /* Gecko Browsers */
+}
