@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import NavProducts from "../../components/NavProducts";
 import ProductCard from "../../components/ProductCard";
 import { firtsLetterUpper } from "../../utils/letters";
 import { getAllCollections, getCollectionByHandle } from "../../utils/shopify";
@@ -14,19 +15,24 @@ const Products = ({ products }) => {
       <Head>
         <title>{`${firtsLetterUpper(router.query.products)} | E-Shopy`}</title>
       </Head>
-      <section className="max-w-[999px] m-auto grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-5 py-10 ">
-        {products.map((product) => {
-          return (
-            <ProductCard
-              key={product.node.id}
-              handle={product.node.handle}
-              image={product.node.featuredImage.url}
-              price={`${product.node.priceRange.minVariantPrice.amount} ${product.node.priceRange.minVariantPrice.currencyCode}`}
-              title={product.node.title}
-              details={product.node.productType}
-            />
-          );
-        })}
+      <section className="max-w-[999px] m-auto ">
+        <div>
+          <NavProducts />
+        </div>
+        <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-5 pb-10 ">
+          {products.map((product) => {
+            return (
+              <ProductCard
+                key={product.node.id}
+                handle={product.node.handle}
+                image={product.node.featuredImage.url}
+                price={`${product.node.priceRange.minVariantPrice.amount} ${product.node.priceRange.minVariantPrice.currencyCode}`}
+                title={product.node.title}
+                details={product.node.productType}
+              />
+            );
+          })}
+        </div>
       </section>
     </>
   );

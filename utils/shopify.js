@@ -38,6 +38,15 @@ export const getProductByHandle = async (handle) => {
                         id
                         url
                       }
+                      collections(first: 1){
+                        edges {
+                          node {
+                            id
+                            title
+                            handle
+                          }
+                        }
+                      }
                       images(first: 10) {
                         edges {
                           node {

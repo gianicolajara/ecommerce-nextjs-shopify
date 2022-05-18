@@ -11,6 +11,7 @@ import FormProductClothes from "../../components/FormProductClothes";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { firtsLetterUpper } from "../../utils/letters";
+import NavProducts from "../../components/NavProducts";
 
 const initialSelectedOptions = {
   Color: "",
@@ -122,13 +123,23 @@ const Product = ({ product }) => {
     setXY(initialXY);
   };
 
+  console.log(product);
+
   return (
     <>
       <Head>
         <title>{firtsLetterUpper(product.title)} | E-Shopy</title>
       </Head>
       <div className="max-w-[999px] m-auto">
-        <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 pb-10 lg:py-10 gap-2 lg:gap-16">
+        <nav className="w-full h-[50px]">
+          {product.collections && (
+            <NavProducts
+              title={product.collections.edges[0].node.title}
+              link={product.collections.edges[0].node.handle}
+            />
+          )}
+        </nav>
+        <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 pb-10 gap-2 lg:gap-16">
           <div className="flex flex-col gap-5">
             <div
               className={`w-full h-[400px] relative  cursor-pointer`}
@@ -187,8 +198,6 @@ export const getStaticProps = async (context) => {
   const { params } = context;
 
   const product = await getProductByHandle(params.product);
-
-  console.log(product.variants.nodes);
 
   return {
     props: {
