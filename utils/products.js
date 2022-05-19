@@ -20,7 +20,6 @@ export const formatterOptions = (options) => {
 };
 
 export const getSizesFromProduct = (variants) => {
-  console.log(variants);
   if (!variants) return [];
   let sizes = [];
   variants.forEach((variant) => {

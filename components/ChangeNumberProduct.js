@@ -7,8 +7,6 @@ const ChangeNumberProduct = ({ item = {} }) => {
   const { handleUpdateCart } = useContext(CartContext);
 
   const handleSum = () => {
-    console.log(item.quantityAvailable);
-
     handleUpdateCart({
       ...item,
       quantity:

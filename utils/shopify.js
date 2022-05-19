@@ -282,8 +282,6 @@ export const getCollectionByHandle = async (handle = "") => {
   const variables = { handle };
   const res = await shopifyData(query, variables);
 
-  console.log(res.data.collection.products);
-
   return res.data.collection.products;
 };
 

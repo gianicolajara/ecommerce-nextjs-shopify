@@ -10,7 +10,6 @@ const LoadingLayout = ({ children }) => {
   const [loading, setLoading] = useState(loadingInitial);
 
   Router.onRouteChangeStart = () => {
-    console.log("comenzando");
     setInterval(25);
     interval = setInterval(() => {
       setLoading((loading) => (loading >= 75 ? loading + 0 : loading + 5));
@@ -19,7 +18,6 @@ const LoadingLayout = ({ children }) => {
   };
 
   Router.onRouteChangeComplete = () => {
-    console.log("terminando");
     clearInterval(interval);
     setLoading(100);
     setTimeout(() => {
