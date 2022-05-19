@@ -4,10 +4,17 @@ import Search from "./Search";
 import Link from "next/link";
 import { sizes } from "../config/sizes";
 import PropTypes from "prop-types";
+import Notification from "./Notification";
+import { useContext } from "react";
+import { ContextNotification } from "../contexts/notification.context";
 
 const Menu = ({ handleOpen = () => {} }) => {
+  const { notification, handleClearNotification } =
+    useContext(ContextNotification);
+
   return (
     <div className="w-full h-auto sticky top-0 left-0 z-[50]">
+      <Notification msg={notification} handleClear={handleClearNotification} />
       <div
         className={`h-[${sizes.menuDes}px] w-full bg-slate-900 flex justify-between items-center pl-10 pr-10 z-50 gap-5`}
       >

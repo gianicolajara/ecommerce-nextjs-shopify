@@ -6,6 +6,7 @@ import Title from "./Title";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
 import PropTypes from "prop-types";
+import { ContextNotification } from "../contexts/notification.context";
 
 const FormProductClothes = ({
   product = {},
@@ -17,10 +18,19 @@ const FormProductClothes = ({
   setQuantity = () => {},
 }) => {
   const { handleAddToCart } = useContext(CartContext);
+  const { handleSetNotification, handleClearNotification } =
+    useContext(ContextNotification);
 
   const addToCart = (variantSelected, quantity) => {
-    handleAddToCart(variantSelected, quantity);
+    handleAddToCart(variantSelected, quantity === 0 ? 1 : quantity);
+    handleClearNotification();
     setQuantity(0);
+    setTimeout(() => {
+      handleSetNotification({
+        variantSelected,
+        quantity: quantity === 0 ? 1 : quantity,
+      });
+    }, 1000);
   };
 
   return (

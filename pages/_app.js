@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CartNav from "../components/CartNav";
 import Footer from "../components/Footer";
 import LoadingLayout from "../components/LoadingLayout";
 import Menu from "../components/Menu";
+import Notification from "../components/Notification";
 import CartContextProvider from "../contexts/cart.context";
+import ContextNotificationProvider, {
+  ContextNotification,
+} from "../contexts/notification.context";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -21,14 +25,16 @@ function MyApp({ Component, pageProps }) {
   return (
     <CartContextProvider>
       <LoadingLayout>
-        <div className="flex flex-col min-h-[100vh] h-full">
-          <Menu open={open} handleOpen={handleOpen} />
-          <CartNav open={open} />
-          <div className="flex-shrink-0 flex-grow">
-            <Component {...pageProps} />
+        <ContextNotificationProvider>
+          <div className="flex flex-col min-h-[100vh] h-full">
+            <Menu open={open} handleOpen={handleOpen} />
+            <CartNav open={open} />
+            <div className="flex-shrink-0 flex-grow">
+              <Component {...pageProps} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </ContextNotificationProvider>
       </LoadingLayout>
     </CartContextProvider>
   );

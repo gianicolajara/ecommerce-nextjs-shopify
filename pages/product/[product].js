@@ -4,7 +4,7 @@ import {
   getProductByHandle,
 } from "../../utils/shopify";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { formatterOptions, getSizesFromProduct } from "../../utils/products";
 import RowImages from "../../components/RowImages";
 import FormProductClothes from "../../components/FormProductClothes";
@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { firtsLetterUpper } from "../../utils/letters";
 import NavProducts from "../../components/NavProducts";
+import Notification from "../../components/Notification";
+import { ContextNotification } from "../../contexts/notification.context";
 
 const initialSelectedOptions = {
   Color: "",
@@ -123,8 +125,6 @@ const Product = ({ product }) => {
     setXY(initialXY);
   };
 
-  console.log(product);
-
   return (
     <>
       <Head>
@@ -139,7 +139,7 @@ const Product = ({ product }) => {
             />
           )}
         </nav>
-        <div className="grid grid-cols-1 grid-rows-[550px,_1fr] lg:grid-cols-2 lg:grid-rows-1 pb-10 gap-2 lg:gap-16">
+        <div className="grid grid-cols-1 grid-rows-[400px,_1fr] lg:grid-cols-2 lg:grid-rows-1 pb-10 gap-2 lg:gap-16">
           <div className="flex flex-col gap-5">
             <div
               className={`w-full h-[400px] relative  cursor-pointer`}
@@ -155,11 +155,11 @@ const Product = ({ product }) => {
                 transition: "background-image 0.2s ease-in-out",
               }}
             ></div>
-            <RowImages
+            {/* <RowImages
               images={product.images.edges}
               selectedImage={selectedImage}
               handleChangeImage={handleChangeImage}
-            />
+            /> */}
           </div>
           <FormProductClothes
             product={product}
