@@ -9,10 +9,6 @@ import { getProductByTitle } from "../../utils/shopify";
 const SearchPage = ({ products }) => {
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <Head>
@@ -45,16 +41,8 @@ const SearchPage = ({ products }) => {
   );
 };
 
-export const getStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
-};
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const { params } = context;
-
   const products = await getProductByTitle(params.search);
 
   return {
